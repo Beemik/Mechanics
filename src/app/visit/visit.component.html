@@ -1,0 +1,55 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        <img src="http://pictures.dealer.com/b/bmwofmanhattan/0129/a4d348cb68a2ed81b2355b4ca0f8d0bex.jpg" title="M Performance logo" alt="M Performance logo" width="1200px">
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>
+                <h5>
+                <input type='text' [(ngModel)] = 'carBrand'/>
+                <br>
+                <input type='text' [(ngModel)] = 'carModelName'/>
+                <br>
+                Stan licznika: 
+                    <input type='text' [(ngModel)] = 'carDistance'/>km</h5>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-4'>
+                <h5>Oddanie samochodu: 
+                    <br>
+                    <input type='date' [(ngModel)] = 'arrivalDate'/>
+                    <br>
+                    Wydanie samochodu klientowi: 
+                    <br>
+                    <input type='date' [(ngModel)] = 'departureDate'/>
+                </h5>
+            </div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table' *ngIf='parts && parts.length'>
+                <thead>
+                    <tr>
+                        <th>Nazwa części</th>
+                        <th>Cena części</th>
+                        <th>Cena robocizny</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <body>
+                    <tr *ngFor='let part of parts'>
+                        <td>{{ part.serviceName }}</td>
+                        <td>{{ part.partPrice | currency:'PLN':1.2-2 }}</td>
+                        <td>{{ part.servicePrice | currency:'PLN':1.2-2 }}</td>
+                        <td><button class='btn btn-primary' (click)='deletePart()'>Delete</button></td>
+                    </tr>
+                </body>
+            </table>
+        </div>
+        <div class='row' [style.margin.px]='10'>
+            <button class='btn btn-primary' (click)='addPart()'>
+                Dodaj usługę
+            </button>
+        </div>
+    </div>
+</div>
